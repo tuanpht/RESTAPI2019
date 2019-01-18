@@ -95,7 +95,7 @@ REST API Development
 ### Historical Results
 
 @ul[](false)
-- @size[1.5em](2017) typical grade was @size[2em](77%)
+- @size[1.5em](2018) typical grade was @size[2em](77%)
 @ulend
 
 ---
