@@ -674,6 +674,77 @@ console.log(add(1,2));
 [@fa[external-link]](http://localhost/ES6/arrow2.html)
 
 
+---
+@title[Map Function]
+### map Function
+
+@ul[](true)
+- ``map()`` is used with arrays
+- ``map()`` it creates a new array from an existing array using a function
+- Let's see an example...
+@ulend
+
+---
+@title[Map Function]
+### map Function
+
+```javascript     
+var numbers = [1,2,3,4,5];
+
+var sqr = function(num) {
+  return num*num;
+}
+
+var values = numbers.map(sqr);
+console.log(values);
+```
+@[1](numbers array)
+@[1,3-5](function to apply to numbers array)
+@[1,3-5,7](map each numbers value to sqr function)
+@[*]
+
+
+@ul[](true)
+- Often you'll see arrow function syntax used...
+@ulend
+
+[@fa[external-link]](http://localhost/ES6/map1.html)
+
+
+
+
+---
+@title[Map Function]
+### map Function
+
+```javascript     
+var numbers = [1,2,3,4,5];
+
+var values = numbers.map((num) => { return num*num; });
+console.log(values);
+```
+@ul[](true)
+- We could abbreviate more with this...
+@ulend
+
+[@fa[external-link]](http://localhost/ES6/map2.html)
+
+---
+@title[Map Function]
+### map Function
+
+```javascript     
+var numbers = [1,2,3,4,5];
+
+var values = numbers.map(num => num*num);
+console.log(values);
+```
+@ul[](true)
+- This works because it is a single statement function
+- But, I'll use ``return`` and curly braces from here on
+@ulend
+
+[@fa[external-link]](http://localhost/ES6/map3.html)
 
 
 
