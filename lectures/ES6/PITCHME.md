@@ -1099,25 +1099,12 @@ import express from 'express';
 ```
 
 
----
-
-- JSX
-
-
-
----
-@title[Exercise 1]
-#### Exercise 1
-
-[@fa[external-link]](https://github.com/noucampdotorgRESTAPI2019/ES6/blob/master/exercises/ES6Ex1.md)
-
-
 
 ---?color=black
 @title[Title]
 
 @snap[west headline text-white span-70]
-to be continued...
+ES6
 @snapend
 
 @snap[south-west]
