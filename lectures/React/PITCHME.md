@@ -995,19 +995,15 @@ ReactDOM.render(<Clock />, document.getElementById('root'));
 ### Exercise
 
 ---
-@title[Contents]
-### Contents
+@title[Exercise]
+### React.js Exercise 3 – React State
 
-@ol[](false)
-- What is React.js?
-- Why React.js?
-- Setup
-- Your First Component
-- JSX
-- Component Properties 
-- State
-- **State & Lifecycle**
-@olend
+[@fa[external-link]](https://github.com/noucampdotorgRESTAPI2019/ReactJS/blob/master/exercises/ReactEx3.md)
+
+
+
+
+
 
 
 
