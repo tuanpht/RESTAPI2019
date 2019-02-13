@@ -727,7 +727,7 @@ export default MyButton;
 @title[State]
 <!-- ### State -->
 
-![](images/MyButton2.png)
+![](lectures/React/images/MyButton2.png)
 
 
 @ul[](true)
@@ -738,7 +738,7 @@ export default MyButton;
 @title[State]
 <!-- ### State -->
 
-![](images/MyButton3.png)
+![](lectures/React/images/MyButton3.png)
 
 
 @ul[](true)
@@ -763,7 +763,7 @@ export default MyButton;
 @title[State]
 ### State
 
-![](images/Clock1.png)
+![](lectures/React/images/Clock1.png)
 
 @ul[](false)
 - Let's create a live Clock component...
@@ -896,7 +896,7 @@ export default class Clock extends React.Component {
 @title[State]
 <!-- ### State -->
 
-![](images/Clock2.png)
+![](lectures/React/images/Clock2.png)
 
 @ul[](true)
 - `this` is not a reference to the class anymore
