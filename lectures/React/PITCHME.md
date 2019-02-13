@@ -992,10 +992,6 @@ ReactDOM.render(<Clock />, document.getElementById('root'));
 
 ---
 @title[Exercise]
-### Exercise
-
----
-@title[Exercise]
 ### React.js Exercise 3 – React State
 
 [@fa[external-link]](https://github.com/noucampdotorgRESTAPI2019/ReactJS/blob/master/exercises/ReactEx3.md)
