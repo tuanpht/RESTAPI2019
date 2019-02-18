@@ -997,10 +997,260 @@ ReactDOM.render(<Clock />, document.getElementById('root'));
 [@fa[external-link]](https://github.com/noucampdotorgRESTAPI2019/ReactJS/blob/master/exercises/ReactEx3.md)
 
 
+---
+@title[Contents]
+### Contents
+
+@ol[](false)
+- What is React.js?
+- Why React.js?
+- Setup
+- Your First Component
+- JSX
+- Component Properties 
+- State
+- **Event Handling**
+
+@olend
+
+---
+@title[Handling Events]
+### Handling Events
+
+Let's add a `onclick` event to `<MyButton>`...
+
+
+---
+@title[Handling Events]
+<!-- ### Handling Events -->
+
+```javascript
+class MyButton extends React.Component {
+  constructor() {
+    super();
+    this.state = { caption: "hello" };
+  }  
+  change = () => {
+    this.setState ( { caption: "hi" } );
+  }
+  render() {
+    return (
+      <button onClick={this.change}>
+        {this.state.caption}
+      </button>
+    );
+  }
+}
+export default MyButton;
+```
+@[11-13](onClick event calls change method)
+@[11-13,6,7,8](set the caption to hi)
+@[*]()
+
+---
+@title[Exercise]
+### React.js Exercise 4 – React Event Handling - Part 1-3
+
+[@fa[external-link]](https://github.com/noucampdotorgRESTAPI2019/ReactJS/blob/master/exercises/ReactEx4.md)
 
 
 
+---
+@title[Contents]
+### Contents
 
+@ol[](false)
+- What is React.js?
+- Why React.js?
+- Setup
+- Your First Component
+- JSX
+- Component Properties 
+- State
+- Event Handling
+- **Component Lifecycle**
+@olend
+
+
+
+---
+@title[Component Lifecycle]
+### Component Lifecycle
+
+@ul[](true)
+- React Components have a lifecycle 
+- Specifically when a component is:
+  - @size[1.5em](mounting) - added to the DOM
+  - @size[1.5em](updating) - updated 
+  - @size[1.5em](unmounting) - removed from the DOM 
+- When a component lifecycle changes specific methods are called...
+@ulend
+
+
+---
+@title[Component Lifecycle]
+### Component Lifecycle
+
+![](lectures/React/images/lifeCycle.png)
+
+@[](#1 constructor() - good for initialising state, etc. )
+@[](#2 render() )
+@[](#3 componentDidMount() )
+@[](#4 render()    (if necessary))
+@[](#5 componentDidUpdate()  )
+@[](#6 componentWillUnmount() )
+
+@ul[](true)
+- We'll use those highlighted in green...
+@ulend
+
+
+---
+@title[Component Lifecycle]
+### Component Lifecycle
+
+@ul[](true)
+- `componentDidMount()` is called after the DOM renders the component for the first time
+- `componentDidUpdate()` is called after DOM re-renders component
+- `componentWillUnmount()` is called after DOM removes the component
+- Let's see these methods used with a `<Timer>`...
+@ulend
+
+---
+@title[Component Lifecycle]
+### Component Lifecycle
+
+@ul[](false)
+- The timer will start at 10 seconds
+@ulend
+
+```javascript
+ReactDOM.render(<Timer value={10} />, 
+                document.getElementById('root'));
+```
+
+
+---
+
+```javascript
+import React from 'react';
+
+class Timer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { time: this.props.value };
+  }
+  render() {
+    return (
+      <div>
+        {this.state.time}
+      </div>
+    );
+  }
+  ...
+}
+export default Timer;
+```
+@[1,3,16](Timer component)
+@[4-7](Constructor uses prop to initialise time value)
+@[4-7,8-14](Render the time)
+@[*]()
+
+@ul[](true)
+- Use `componentDidMount()` to start the timer...
+@ulend
+
+---
+
+```javascript
+class Timer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { time: this.props.value };
+  }
+  ...
+  componentDidMount() {
+    this.timerID = setInterval(this.tick,1000);
+  }
+}
+```
+@[7-9](componentDidMount() is a great place to start the timer)
+@[7-9](we get a reference to the timer too)
+@[*]()
+
+@ul[](true)
+- Add `tick()` method...
+@ulend
+
+---
+
+```javascript
+class Timer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { time: this.props.value };
+  }
+  ...
+  componentDidMount() {
+    this.timerID = setInterval(this.tick,1000);
+  }
+  tick = () => {
+    if(this.state.time==0)
+      return;
+    this.setState( { time: this.state.time-1 } );
+  }
+}
+```
+@[10,14](tick as arrow function)
+@[10,14](no need to bind this to tick)
+@[10,14,11-12](if time is ZERO return)
+@[10,14,11-12,13](decrement time)
+@[*]()
+
+@ul[](true)
+- Finally use `componentWillUnmount()` method to cleanup...
+@ulend
+
+
+---
+```javascript
+class Timer extends React.Component {
+  ...
+  componentDidMount() {
+    this.timerID = setInterval(this.tick,1000);
+  }
+  tick = () => {
+    if(this.state.time==0)
+      return;
+    this.setState( { time: this.state.time-1 } );
+  }
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
+}
+```
+@[4,11-13](clear the timer using reference we got earlier)
+@[*]()
+
+@ul[](true)
+- That's it.
+@ulend
+
+---
+@title[Component Lifecycle]
+### Component Lifecycle
+
+@ul[](true)
+- In `<Timer>` we used the `componentDidMount()` lifecycle method to start the timer
+- In `<Timer>` we used the `componentWillUnmount()` lifecycle method to stop the timer
+- Later we'll use `componentDidMount()` to @size[1.5em](fetch data)
+@ulend
+
+---
+@title[Exercise]
+### React.js Exercise 4 – React Lifecyle Events - Part 4
+
+[@fa[external-link]](https://github.com/noucampdotorgRESTAPI2019/ReactJS/blob/master/exercises/ReactEx4.md)
 
 
 ---?color=black
