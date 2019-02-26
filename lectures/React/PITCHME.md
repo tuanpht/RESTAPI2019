@@ -1478,6 +1478,141 @@ toggle = () => {
 [@fa[external-link]](https://github.com/noucampdotorgRESTAPI2019/ReactJS/blob/master/exercises/ReactEx4.md)
 
 
+---
+@title[Contents]
+### Contents
+
+@ol[](false)
+- ...
+- State
+- Event Handling
+- Component Lifecycle
+- Conditional Rendering
+- Previous State
+- **Fetching Data**
+@olend
+
+---
+@title[Fetching Data]
+### Fetching Data
+
+Let's see a component `<Clubs>` that uses static data...
+
+---
+
+```javascript
+class Clubs extends React.Component {
+  constructor() {
+    super();
+    this.state = { "clubs": [
+        {"name": "Manchester United", "stadium": "Old Trafford"},
+        {"name": "Liverpool", "stadium": "Anfield"},
+        {"name": "Arsenal", "stadium": "Emirates"},
+        {"name": "Manchester City", "stadium": "Ethidad"}]
+    };
+  }
+  render() {
+    return (
+      <div><h2>Clubs</h2>
+      {this.state.clubs.map((item) => {
+                              return <p>{item.name}</p>; })}
+      </div>
+    );
+  }
+}
+```
+@[1,20](Clubs class component)
+@[1,20,2-10](state data)
+@[1,20,2-10,11-18](render state data)
+
+---
+
+![](lectures/React/images/Clubs.png)
+
+---
+@title[Fetching Data]
+### Fetching Data
+
+@ul[](true)
+- A better way is to fetch the data using the `fetch()` method
+- `fetch()` is very similar to an Ajax request
+- Use it to fetch data from any valid URL source, e.g.
+  - a PHP program
+  - REST API request
+- We'll use an Express File Server to get data...
+@ulend
+
+
+---
+@title[Fetching Data]
+### Simple File Server
+
+```javascript
+// fileServer/index.js
+var express = require("express");
+var cors = require("cors");
+
+var app = express();
+
+app.use(cors());
+app.use(express.static('public'));
+
+var myServer = app.listen(5000, function() {
+  console.log("File Server listening on port 5000");
+});
+```
+Data is stored in a file `clubs.json`...
+
+---
+@title[Fetching Data]
+
+```javascript
+// fileServer/public/clubs.json
+{  
+  "clubs":[  
+    {"name":"Manchester United","stadium":"Old Trafford"},
+    {"name":"Liverpool","stadium":"Anfield"},
+    {"name":"Arsenal","stadium":"Emirates"},
+    {"name":"Manchester City","stadium":"Ethidad"}
+  ]
+}
+```
+Let's see how to fetch this data...
+
+---
+
+![](lectures/React/images/Clubs_json.png)
+
+Let's use this in a new component...
+
+---
+
+```javascript
+class ClubsV2 extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { clubs: [] };
+  }
+  componentDidMount() {
+    fetch('http://localhost:5000/clubs.json')
+        .then((data) => data.json())
+        .then((data) => this.setState({clubs: data.clubs}));
+  }
+  render() {
+    return (
+      <div><h2>Clubs</h2>
+      {this.state.clubs.map((item) => {
+                            return <p>{item.name}</p>; })}
+      </div>
+    );
+  }
+}
+```
+@[1,19](ClubsV2 class component)
+@[1,19,2-5](state data)
+@[1,19,2-5,6-10](use componentDidMount to fetch the data)
+@[1,19,2-5,6-10,11-18](render the club data)
+
 
 ---?color=black
 @title[Title]
