@@ -1614,6 +1614,15 @@ class ClubsV2 extends React.Component {
 @[1,19,2-5,6-10,11-18](render the club data)
 
 
+
+---
+@title[Exercise]
+### React.js Exercise 5
+
+[@fa[external-link]](https://github.com/noucampdotorgRESTAPI2019/ReactJS/blob/master/exercises/ReactEx5.md)
+
+
+
 ---?color=black
 @title[Title]
 
